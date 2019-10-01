@@ -24,21 +24,22 @@ class _MyHomePageState extends State<MyHomePage> {
   String _value = '';
 
   static List<DateTime> db = [
-    DateTime(2019, 03, 01),
-    DateTime(2019, 03, 02),
-    DateTime(2019, 03, 03),
-    DateTime(2019, 03, 04),
-    DateTime(2019, 03, 05),
-    DateTime(2019, 03, 06),
-    DateTime(2019, 03, 07),
-    DateTime(2019, 03, 08),
-    DateTime(2019, 03, 09),
-    DateTime(2019, 03, 11),
-    DateTime(2019, 03, 13),
-    DateTime(2019, 03, 17),
-    DateTime(2019, 03, 20),
-    DateTime(2019, 03, 25),
-    DateTime(2019, 03, 30),
+    DateTime(2019, 09, 01),
+    DateTime(2019, 09, 02),
+    DateTime(2019, 09, 03),
+    DateTime(2019, 09, 04),
+    DateTime(2019, 09, 05),
+    DateTime(2019, 09, 06),
+    DateTime(2019, 09, 07),
+    DateTime(2019, 09, 08),
+    DateTime(2019, 09, 09),
+    DateTime(2019, 09, 11),
+    DateTime(2019, 09, 13),
+    DateTime(2019, 09, 17),
+    DateTime(2019, 09, 20),
+    DateTime(2019, 09, 25),
+    DateTime(2019, 09, 30),
+    DateTime.now(),
   ];
   Set<String> unselectableDates = getDateSet(db);
 
@@ -53,8 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       initialDate: new DateTime.now(),
       //TODO: 일지 등록한 날짜만 활성화 되도록 하고 싶으면 initialDate를 가장 최근 일지를 등록한 날짜로 설정해야함
-      firstDate: new DateTime(
-        DateTime.now().year,
+      firstDate:
+      new DateTime(
+        DateTime.now().year-5,
         DateTime.now().month-5,
         DateTime.now().day,
       ),
@@ -62,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ///아래 selectableDayPredicate는
       ///현재는 위 db 리스트에 있는 날짜들은 일지 작성 안한 날짜들 !!
       selectableDayPredicate: (DateTime val) {
+        print("$val@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         String sanitized = sanitizeDateTime(val);
         return !unselectableDates.contains(sanitized);
       }, //TODO: 위 TODO를 하려면 'return !unselectableDates.contains(sanitized) == true ? false : true ;'로 변경
